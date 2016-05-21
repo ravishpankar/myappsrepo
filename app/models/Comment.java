@@ -18,6 +18,7 @@ import javax.persistence.PrePersist;
 @Entity
 public class Comment extends Model {
     @Id
+    @Column(name="comment_id")
     public String id;
 
     @Column(name="post_id")

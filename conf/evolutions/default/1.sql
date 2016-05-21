@@ -4,20 +4,20 @@
 # --- !Ups
 
 create table comment (
-  id                        varchar(255) not null,
+  comment_id                varchar(255) not null,
   post_id                   varchar(255),
   comment                   varchar(500),
-  commented_on              timestamp,
+  commented_on              datetime(6),
   user_id                   varchar(16),
-  constraint pk_comment primary key (id))
+  constraint pk_comment primary key (comment_id))
 ;
 
 create table post (
-  id                        varchar(255) not null,
+  post_id                   varchar(255) not null,
   post                      varchar(500),
-  posted_on                 timestamp,
+  posted_on                 datetime(6),
   user_id                   varchar(16),
-  constraint pk_post primary key (id))
+  constraint pk_post primary key (post_id))
 ;
 
 create table user (
@@ -25,26 +25,18 @@ create table user (
   pwd                       varchar(255))
 ;
 
-create sequence comment_seq;
-
-create sequence post_seq;
-
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists comment;
+drop table comment;
 
-drop table if exists post;
+drop table post;
 
-drop table if exists user;
+drop table user;
 
-SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists comment_seq;
-
-drop sequence if exists post_seq;
+SET FOREIGN_KEY_CHECKS=1;
 
