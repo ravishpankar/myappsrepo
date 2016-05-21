@@ -1,0 +1,69 @@
+@(ps: java.util.List[models.Post], nPosts: java.lang.Integer, pgf : helpers.PageFooter)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/posts.css")>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>Posts</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">SI2Chip</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#"> Posts </a></li>
+                <li><a href="@routes.HomeController.logout"><span class="glyphicon glyphicon-log-out"></span> Sign out </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" id="addpostformcontainer">
+        @addpostform(nPosts)
+    </div>
+    <div class="container" id="currentpagecontainer">
+        @postspage(ps,pgf)
+    </div>
+
+</body>
+
+<script type="text/javascript">
+        function loadPage(url) {
+            $("#currentpagecontainer").load(url, checkStatus);
+        }
+
+        function checkStatus(responseTxt, statusTxt, xhr){
+            if(statusTxt == "error")
+                $("#currentpagecontainer").html("<div class=\"row\"><div class=\"col-sm-6 col-sm-offset-3\"><div class=\"well well-lg\"><h2>An error while loading the page. Refresh the page.</h2></div></div></div>");
+        }
+
+        $("#addpostfrm")
+        .ajaxForm({
+        url : "@routes.PostController.addPost",
+        dataType : "html",
+        success : function (response) {
+            var frm = document.getElementById("addpostfrm");
+            frm.reset();
+            var pgnav = $($.parseHTML(response)).filter("#pgnav");
+            var posts = $($.parseHTML(response)).filter("#posts");
+            var count = $($.parseHTML(response)).filter("#count");
+            var script = $($.parseHTML(response,true)).filter("script");
+            $(".badge").remove();
+            $("#numposts").append(count);
+            $("#currentpagecontainer").html("");
+            $("#currentpagecontainer").append(pgnav,posts,script);
+        },
+        error: function (data) {
+            $("#currentpagecontainer").html("<div class=\"row\"><div class=\"col-sm-6 col-sm-offset-3\"><div class=\"well well-lg\"><h2>An error while adding the post. Try again.</h2></div></div></div>");
+        }
+        });
+
+    </script>
+</html>

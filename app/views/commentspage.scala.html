@@ -1,0 +1,44 @@
+@(cs: java.util.List[models.Comment], postId: java.lang.String, pgf : helpers.PageFooter)
+
+
+@if(pgf.up || pgf.down) {
+    <div class="row" id="pgnav">
+        <div class="col-sm-2 col-sm-offset-5">
+            @if(pgf.up) {
+            <a href="@routes.CommentController.getNextPage(pgf.lastD, postId)" id="@pgf.upId" onclick="@pgf.upFId (event)" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-circle-arrow-up"></span>
+            </a>
+            }
+            @if(pgf.down) {
+            <a href="@routes.CommentController.getPreviousPage(pgf.firstD, postId)" id="@pgf.downId" onclick="@pgf.downFId (event)" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-circle-arrow-down"></span>
+            </a>
+            }
+        </div>
+    </div>
+}
+
+    <div class="row" id="comments">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="well well-lg">
+                @for(comment <- cs) {
+                <div class="well well-lg"><h5><i>Commented by <span class="user">@comment.userId</span> on @comment.commentedOn</i></h5><br>
+                    <span>@comment.comment</span><br>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function @pgf.upFId (ev){
+            ev.preventDefault();
+            loadPage(document.getElementById("@pgf.upId").href);
+        }
+
+        function @pgf.downFId (ev){
+            ev.preventDefault();
+            loadPage(document.getElementById("@pgf.downId").href);
+        }
+    </script>

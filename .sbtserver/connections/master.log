@@ -1,0 +1,91 @@
+New log file opened at Mon May 16 17:19:32 IST 2016 by 4380@dell
+Taking next connection to: 52817
+New client attempting to connect on port: 52818-52817
+  Address = /192.168.1.101:52817
+This client on port 52818 has uuid 8845ae20-a782-4e7c-ba9a-3f85006f10be configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-8845ae20-a782-4e7c-ba9a-3f85006f10be
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 52817
+New client attempting to connect on port: 53879-52817
+  Address = /192.168.1.101:52817
+Handshake exception on socket: 53879
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readInt(DataInputStream.java:387)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 52817
+New client attempting to connect on port: 53880-52817
+  Address = /192.168.1.101:52817
+This client on port 53880 has uuid ea22c2dd-9df6-4c6b-8627-d9ce98361d0f configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-ea22c2dd-9df6-4c6b-8627-d9ce98361d0f
+Taking next connection to: 52817
+New client attempting to connect on port: 53939-52817
+  Address = /192.168.1.101:52817
+Handshake exception on socket: 53939
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readInt(DataInputStream.java:387)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 52817
+New client attempting to connect on port: 53940-52817
+  Address = /192.168.1.101:52817
+This client on port 53940 has uuid 09a63873-4a72-436e-bef8-73ea9f514456 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-09a63873-4a72-436e-bef8-73ea9f514456
+Taking next connection to: 52817
+Checking to see if clients are empty...
+No non-daemon clients connected after 3 min. Shutting down.
+Server socket thread exiting.
+0 clients open, will close them...
+All client sockets have been closed.
+Closing the 4380@dell logs at Mon May 16 18:06:47 IST 2016, goodbye.

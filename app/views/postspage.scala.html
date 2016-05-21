@@ -1,0 +1,46 @@
+@(ps: java.util.List[models.Post], pgf : helpers.PageFooter)
+
+@if(pgf.up || pgf.down) {
+    <div class="row" id="pgnav">
+        <div class="col-sm-2 col-sm-offset-5">
+            @if(pgf.up) {
+            <a href="@routes.PostController.getNextPage(pgf.lastD)" id="@pgf.upId" onclick="@pgf.upFId (event)" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-circle-arrow-up"></span>
+            </a>
+            }
+            @if(pgf.down) {
+            <a href="@routes.PostController.getPreviousPage(pgf.firstD)" id="@pgf.downId" onclick="@pgf.downFId (event)" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-circle-arrow-down"></span>
+            </a>
+            }
+        </div>
+    </div>
+}
+    <div class="row" id="posts">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="well well-lg">
+                @for(post <- ps) {
+                <div class="well well-lg"><h5><i><span>Posted by <span class="user">@post.userId</span> on @post.postedOn</i></h5><br>
+                    <span>@post.post</span>
+                    <br><br>
+                    <form action="@routes.CommentController.getComments(post.id)" method="GET">
+                        <button type="submit" class="btn btn-primary btn-sm">Comments</button>
+                    </form>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function @pgf.upFId (ev){
+            ev.preventDefault();
+            loadPage(document.getElementById("@pgf.upId").href);
+        }
+
+        function @pgf.downFId (ev){
+            ev.preventDefault();
+            loadPage(document.getElementById("@pgf.downId").href);
+        }
+    </script>
+

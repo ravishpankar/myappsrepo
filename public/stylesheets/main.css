@@ -1,0 +1,8 @@
+body {
+    background-color: white;
+}
+
+#error {
+    white-space: pre-wrap;
+    color: #ee0000;
+}
