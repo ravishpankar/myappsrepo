@@ -3,6 +3,15 @@
 
 # --- !Ups
 
+create table post (
+  id                            bigint auto_increment not null,
+  post                          varchar(500),
+  posted_on                     datetime(6),
+  user_id                       varchar(16),
+  constraint pk_post primary key (id)
+);
+
+
 create table comment (
   id                            bigint auto_increment not null,
   post_id                       varchar(255),
@@ -10,14 +19,6 @@ create table comment (
   commented_on                  datetime(6),
   user_id                       varchar(16),
   constraint pk_comment primary key (id)
-);
-
-create table post (
-  id                            bigint auto_increment not null,
-  post                          varchar(500),
-  posted_on                     datetime(6),
-  user_id                       varchar(16),
-  constraint pk_post primary key (id)
 );
 
 create table user (
