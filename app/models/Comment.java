@@ -19,7 +19,6 @@ import javax.persistence.PrePersist;
 @Entity
 public class Comment extends Model {
     @Id
-    @Column(name="comment_id")
     public BigInteger id;
 
     @Column(name="post_id")

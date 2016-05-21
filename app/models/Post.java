@@ -20,7 +20,6 @@ import javax.persistence.PrePersist;
 @Entity
 public class Post extends Model {
     @Id
-    @Column(name="post_id")
     public BigInteger id;
 
     @Column(name="post",length=500)

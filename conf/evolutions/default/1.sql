@@ -4,39 +4,33 @@
 # --- !Ups
 
 create table comment (
-  comment_id                bigint auto_increment not null,
-  post_id                   varchar(255),
-  comment                   varchar(500),
-  commented_on              datetime(6),
-  user_id                   varchar(16),
-  constraint pk_comment primary key (comment_id))
-;
+  id                            bigint auto_increment not null,
+  post_id                       varchar(255),
+  comment                       varchar(500),
+  commented_on                  datetime(6),
+  user_id                       varchar(16),
+  constraint pk_comment primary key (id)
+);
 
 create table post (
-  post_id                   bigint auto_increment not null,
-  post                      varchar(500),
-  posted_on                 datetime(6),
-  user_id                   varchar(16),
-  constraint pk_post primary key (post_id))
-;
+  id                            bigint auto_increment not null,
+  post                          varchar(500),
+  posted_on                     datetime(6),
+  user_id                       varchar(16),
+  constraint pk_post primary key (id)
+);
 
 create table user (
-  user_id                   varchar(16),
-  pwd                       varchar(255))
-;
-
-
+  user_id                       varchar(16),
+  pwd                           varchar(255)
+);
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+drop table if exists comment;
 
-drop table comment;
+drop table if exists post;
 
-drop table post;
-
-drop table user;
-
-SET FOREIGN_KEY_CHECKS=1;
+drop table if exists user;
 
