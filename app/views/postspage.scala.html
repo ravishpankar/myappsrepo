@@ -23,7 +23,7 @@
                 <div class="well well-lg"><h5><i><span>Posted by <span class="user">@post.userId</span> on @post.postedOn</i></h5><br>
                     <span>@post.post</span>
                     <br><br>
-                    <form action="@routes.CommentController.getComments(post.id)" method="GET">
+                    <form action="@routes.CommentController.getComments(post.id.toString())" method="GET">
                         <button type="submit" class="btn btn-primary btn-sm">Comments</button>
                     </form>
                 </div>

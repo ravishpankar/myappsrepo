@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table comment (
-  comment_id                varchar(255) not null,
+  comment_id                bigint auto_increment not null,
   post_id                   varchar(255),
   comment                   varchar(500),
   commented_on              datetime(6),
@@ -13,7 +13,7 @@ create table comment (
 ;
 
 create table post (
-  post_id                   varchar(255) not null,
+  post_id                   bigint auto_increment not null,
   post                      varchar(500),
   posted_on                 datetime(6),
   user_id                   varchar(16),

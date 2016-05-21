@@ -40,7 +40,7 @@
     </div>
 
     <div class="container" id="currentpagecontainer">
-        @commentspage(cs,post.id,pgf)
+        @commentspage(cs,post.id.toString(),pgf)
     </div>
     <script type="text/javascript">
         function loadPage(url) {
@@ -53,7 +53,7 @@
         }
         $("#addcommentfrm")
         .ajaxForm({
-        url : "@routes.CommentController.addComment(post.id)",
+        url : "@routes.CommentController.addComment(post.id.toString())",
         dataType : "html",
         success : function (response) {
             var frm = document.getElementById("addcommentfrm");

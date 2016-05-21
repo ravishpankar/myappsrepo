@@ -1,4 +1,4 @@
 @(cs: java.util.List[models.Comment], nComments: java.lang.Integer, post: models.Post, pgf: helpers.PageFooter)
 
 <span class="badge" id="count">@nComments</span>
-@commentspage(cs,post.id,pgf)
+@commentspage(cs,post.id.toString(),pgf)

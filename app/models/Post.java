@@ -7,6 +7,7 @@ import play.data.format.*;
 import play.data.validation.*;
 import play.mvc.Security;
 
+import java.math.BigInteger;
 import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.PrePersist;
 public class Post extends Model {
     @Id
     @Column(name="post_id")
-    public String id;
+    public BigInteger id;
 
     @Column(name="post",length=500)
     @Constraints.Required

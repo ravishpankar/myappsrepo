@@ -5,6 +5,7 @@ import helpers.Util;
 import play.data.format.*;
 import play.data.validation.*;
 
+import java.math.BigInteger;
 import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.PrePersist;
 public class Comment extends Model {
     @Id
     @Column(name="comment_id")
-    public String id;
+    public BigInteger id;
 
     @Column(name="post_id")
     public String postId;
