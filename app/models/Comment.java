@@ -24,7 +24,7 @@ public class Comment extends Model {
     @Column(name="post_id")
     public String postId;
 
-    @Column(name="comment",length=500)
+    @Column(name="comment_msg",length=500)
     @Constraints.Required
     public String comment;
 

@@ -15,15 +15,13 @@ import javax.persistence.PrePersist;
  * Created by admin on 5/17/2016.
  */
 @Entity
-public class User extends Model {
+public class Usr extends Model {
+
     @Column(name="user_id", length=16)
     public String userId;
 
     @Column(name="pwd")
     public String password;
 
-    public static Finder<String, User> find = new Finder<String, User>(User.class);
+    public static Finder<String, Usr> find = new Finder<String, Usr>(Usr.class);
 }
-
-
-

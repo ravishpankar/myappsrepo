@@ -1,6 +1,6 @@
 package controllers;
 
-import models.User;
+import models.Usr;
 
 import play.mvc.*;
 
@@ -16,15 +16,15 @@ public class AdminController extends Controller {
     }
 
     public Result addUsers() {
-        User u = new User();
+        Usr u = new Usr();
         u.userId = "ravi";
         u.password = "ravish123";
         u.save();
-        u = new User();
+        u = new Usr();
         u.userId = "suresh";
         u.password = "suresh123";
         u.save();
-        u = new User();
+        u = new Usr();
         u.userId = "ashok";
         u.password = "ashok123";
         u.save();

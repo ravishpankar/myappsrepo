@@ -22,7 +22,7 @@ public class Post extends Model {
     @Id
     public BigInteger id;
 
-    @Column(name="post",length=500)
+    @Column(name="post_msg",length=500)
     @Constraints.Required
     public String post;
 

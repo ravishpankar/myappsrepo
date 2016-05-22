@@ -6,7 +6,7 @@
 create table comment (
   id                            bigserial not null,
   post_id                       varchar(255),
-  comment                       varchar(500),
+  comment_msg                   varchar(500),
   commented_on                  timestamp,
   user_id                       varchar(16),
   constraint pk_comment primary key (id)
@@ -14,13 +14,13 @@ create table comment (
 
 create table post (
   id                            bigserial not null,
-  post                          varchar(500),
+  post_msg                      varchar(500),
   posted_on                     timestamp,
   user_id                       varchar(16),
   constraint pk_post primary key (id)
 );
 
-create table user (
+create table usr (
   user_id                       varchar(16),
   pwd                           varchar(255)
 );
@@ -32,5 +32,5 @@ drop table if exists comment cascade;
 
 drop table if exists post cascade;
 
-drop table if exists user cascade;
+drop table if exists usr cascade;
 

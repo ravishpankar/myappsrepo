@@ -1,8 +1,9 @@
 package controllers;
 
 import java.util.List;
-import models.User;
+import models.Usr;
 
+import models.Usr;
 import play.data.Form;
 import play.mvc.*;
 
@@ -29,7 +30,7 @@ public class HomeController extends Controller {
     public Result login() {
         Login loginCreds = Form.form(Login.class).bindFromRequest().get();
 
-        List<User> user = User.find.where().eq("userId",loginCreds.userId).findList();
+        List<Usr> user = Usr.find.where().eq("userId",loginCreds.userId).findList();
         if (user != null && user.size() != 0) {
             if (user.get(0).password.equals(loginCreds.password)) {
                 session().clear();
