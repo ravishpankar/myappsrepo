@@ -1,5 +1,5 @@
 {
   "deploy":{
-    "goal": "-Dplay.version=2.5.3 -Dhttp.port=8080"
+    "goal": "-Dplay.version=2.5.3"
   }
 }
