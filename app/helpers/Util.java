@@ -1,42 +1,46 @@
 package helpers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import play.libs.Json;
+
+
+import org.joda.time.LocalDateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Created by admin on 5/19/2016.
  */
 public class Util {
-    private static String sDF = "EEE, d MMM yyyy HH:mm:ss:SSS zzzz";
-    private static String sRDF = "MMddyyyyHHmmssSSS";
+    private final static String sDF = "HH:mm:ss:SSS EEE, d MMM yyyy";
 
-    public static Date getDate (String sDate) throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat(sDF);
-        return formatter.parse(sDate);
-    }
-    public static String getDateString (Date date) throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat(sDF);
-        return formatter.format(date);
-    }
+    public static String toSessionTimeZone (LocalDateTime dateTime, String tZoneOffset) throws Exception {
+        int lOffset = Integer.parseInt(tZoneOffset);
 
-    public static String getNonReadableDateString (Date date) throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat(sRDF);
-        return formatter.format(date);
+        LocalDateTime c;
+        if (lOffset < 0)
+            c = dateTime.plusMinutes(-lOffset);
+        else
+            c = dateTime.minusMinutes(lOffset);
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern(sDF);
+        return formatter.withZoneUTC().print(c);
     }
 
-    public static Date getDateFromNonReadableString (String sDate) throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat(sRDF);
-        return formatter.parse(sDate);
+    public static String formatLocalDateTime(LocalDateTime dateTime) {
+        DateTimeFormatter formatter = DateTimeFormat.forPattern(sDF);
+        return formatter.withZoneUTC().print(dateTime);
     }
 
-    public static Date getFirstDateAD () throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat("mm/DD/yyyy");
-        return formatter.parse("01/01/0001");
+    public static LocalDateTime getTimeStamp()  {
+        LocalDateTime inst = LocalDateTime.now(DateTimeZone.UTC);
+        return inst;
     }
 
-    public synchronized static Date getTimeStamp()  throws InterruptedException {
-        Date ts = new Date();
-        Thread.currentThread().sleep(1);
-        return ts;
+    public static ObjectNode getJSONObj(String s) {
+        ObjectNode result = Json.newObject();
+        result.put("error", s);
+        return result;
     }
 }

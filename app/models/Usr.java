@@ -17,11 +17,17 @@ import javax.persistence.PrePersist;
 @Entity
 public class Usr extends Model {
 
-    @Column(name="user_id", length=16)
+    @Id
+    public Integer id;
+
+    @Column(name="user_id", length=255)
     public String userId;
 
     @Column(name="pwd")
     public String password;
+
+    @Column(name="is_admin")
+    public boolean isAdmin;
 
     public static Finder<String, Usr> find = new Finder<String, Usr>(Usr.class);
 }

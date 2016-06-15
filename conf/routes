@@ -3,21 +3,56 @@
 # ~~~~
 
 GET     /                           controllers.HomeController.showHomePage
+GET     /noaccess                   controllers.HomeController.showForbiddenPage
 POST    /login                      controllers.HomeController.login
 GET     /logout                     controllers.HomeController.logout
+GET     /summary                    controllers.HomeController.getUserSummary
+
+POST    /group                      controllers.GroupController.addGroup
+DELETE  /group/:groupId             controllers.GroupController.deleteGroup(groupId)
+DELETE  /groupuser/:groupId/:userId controllers.GroupController.deleteGroupUser(groupId,userId)
+POST    /groupuser                  controllers.GroupController.addUserToGroup
+GET     /mygroups/:userId           controllers.GroupController.getMyGroups(userId)
+GET     /ownedgroups                controllers.GroupController.getOwnedGroups
+GET     /groups                     controllers.GroupController.showGroupsPage
+GET     /groupusers/:groupId        controllers.GroupController.getGroupUsers(groupId)
+GET     /allusers                   controllers.GroupController.getUsers
 
 GET     /posts                      controllers.PostController.getPosts
 POST    /post                       controllers.PostController.addPost
-GET     /posts/before/:firstD       controllers.PostController.getPreviousPage(firstD)
-GET     /posts/after/:lastD         controllers.PostController.getNextPage(lastD)
+POST    /postnotify                 controllers.PostController.addPostAndBroadcast
+DELETE  /post/:postId               controllers.PostController.deletePost(postId)
+GET     /posts/before/:firstId      controllers.PostController.getPreviousPage(firstId)
+GET     /posts/after/:lastId        controllers.PostController.getNextPage(lastId)
+GET     /posts/first                controllers.PostController.getFirstPage
+GET     /posts/refresh/:endId       controllers.PostController.refreshPage(endId)
+GET     /posts/user/before/:firstId controllers.PostController.getPreviousPageUser(firstId)
+GET     /posts/user/after/:lastId   controllers.PostController.getNextPageUser(lastId)
+GET     /posts/user/first           controllers.PostController.getFirstPageUser
+GET     /posts/user/refresh/:endId  controllers.PostController.refreshPageUser(endId)
+GET     /posts/userbposts/before/:firstId controllers.PostController.getPreviousPageUserBroadcast(firstId)
+GET     /posts/userbposts/after/:lastId   controllers.PostController.getNextPageUserBroadcast(lastId)
+GET     /posts/userbposts/first           controllers.PostController.getFirstPageUserBroadcast
+GET     /posts/userbposts/refresh/:endId  controllers.PostController.refreshPageUserBroadcast(endId)
 
 GET     /admin                      controllers.AdminController.showAdminPage
-POST    /users                      controllers.AdminController.addUsers
+GET     /users                      controllers.AdminController.getUsers
+POST    /user                       controllers.AdminController.addUser
+PUT     /user                       controllers.AdminController.modifyUser
+DELETE  /user/:userId               controllers.AdminController.deleteUser(userId)
+POST    /admin                      controllers.AdminController.addAdmin
+PUT     /admin                      controllers.AdminController.modifyAdmin
+GET     /admins                     controllers.AdminController.getAdminUsers
+GET     /setup                      controllers.AdminController.showSetupPage
+GET     /noadminaccess              controllers.AdminController.showForbiddenPage
 
-GET     /comments/:postId           controllers.CommentController.getComments(postId)
-POST    /comment/:postId            controllers.CommentController.addComment(postId)
-GET     /comments/before/:firstD/:postId    controllers.CommentController.getPreviousPage(firstD,postId)
-GET     /comments/after/:lastD/:postId      controllers.CommentController.getNextPage(lastD,postId)
+POST    /comment/:postId                    controllers.CommentController.addComment(postId)
+DELETE  /comment/:postId/:commentId         controllers.CommentController.deleteComment(postId,commentId)
+GET     /comments/before/:postId/:firstId   controllers.CommentController.getPreviousPage(postId,firstId)
+GET     /comments/after/:postId/:lastId     controllers.CommentController.getNextPage(postId,lastId)
+GET     /comments/first/:postId             controllers.CommentController.getFirstPage(postId)
+GET     /comments/last/:postId              controllers.CommentController.getLastPage(postId)
+GET     /comments/refresh/:postId/:beginId  controllers.CommentController.refreshPage(postId,beginId)
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count

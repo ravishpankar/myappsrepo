@@ -13,7 +13,8 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-  "org.postgresql" % "postgresql" % "9.4.1208.jre7"
+  "org.postgresql" % "postgresql" % "9.4.1208.jre7",
+  "com.typesafe.play" %% "play-mailer" % "5.0.0-M1"
 )
 
 
